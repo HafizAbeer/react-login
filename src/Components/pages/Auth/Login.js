@@ -11,6 +11,24 @@ export default function Login({ setIsLoggedIn, setUserEmail, setCurrentView }) {
 
   const handleLogin = () => {
     const userData = JSON.parse(localStorage.getItem('userData'));
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if(!emailRegex.test(email)){
+      alert("Please enter correct email")
+      return
+    }
+    if(!email){
+      alert("Please enter your email")
+      return
+    }
+    if(!password){
+      alert("Please enter your password")
+      return
+    }
+    if(password.length < 6){
+      alert("Invalid email or password")
+      return
+    }
 
     if (userData && userData.email === email && userData.password === password) {
       alert('Login successful!');

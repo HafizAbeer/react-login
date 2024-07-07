@@ -10,8 +10,31 @@ export default function Register({ setCurrentView }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const handleRegister = () => {
+
+    if(!name){
+      alert("Please enter your name")
+      return
+    }
+    if(!emailRegex.test(email)){
+      alert("Please enter correct email")
+      return
+    }
+    if(!email){
+      alert("Please enter your email")
+      return
+    }
+    if(!password){
+      alert("Please enter your password")
+      return
+    }
+    if(password.length < 6){
+      alert("Minimum length of password should be at least 6 characters")
+      return
+    }
+
     const formData = { name, email, password };
 
     // Save user data to local storage

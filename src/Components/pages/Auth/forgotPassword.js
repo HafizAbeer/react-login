@@ -7,7 +7,17 @@ import email_icon from '../../Assets/email.png';
 export default function ForgotPassword({ setCurrentView }) {
   const [email, setEmail] = useState('');
 
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
   const handleForgotPassword = () => {
+    if(!email){
+      alert("Please enter email")
+      return
+    }
+    if (!emailRegex.test(email)) {
+      alert("Please enter correct email")
+      return
+    }
     // Handle forgot password logic here
     alert(`Password reset link sent to ${email}`);
   };
